@@ -5944,7 +5944,7 @@ SELECT ID, Login, Password, Role_ID FROM Accounts WHERE (ID = @ID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::laba5.Properties.Settings.Default.AutoDBConnectionString;
+            this._connection.ConnectionString = global::laba5.Properties.Settings.Default.AutoDBConnectionString1;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5963,7 +5963,7 @@ SELECT ID, Login, Password, Role_ID FROM Accounts WHERE (ID = @ID)";
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
             this._commandCollection[2].CommandText = "INSERT INTO [dbo].[Accounts] ([Login], [Password], [Role_ID]) VALUES (@NewLogin, " +
-                "@NewPassword, @NewRole_ID)";
+                "@NewPassword, @NewRole_ID)\r\n";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NewLogin", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Login", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NewPassword", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Password", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -6439,7 +6439,7 @@ SELECT ID, Login, Password, Role_ID FROM Accounts WHERE (ID = @ID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::laba5.Properties.Settings.Default.AutoDBConnectionString;
+            this._connection.ConnectionString = global::laba5.Properties.Settings.Default.AutoDBConnectionString1;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6458,7 +6458,7 @@ SELECT ID, Login, Password, Role_ID FROM Accounts WHERE (ID = @ID)";
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
             this._commandCollection[2].CommandText = "UPDATE [dbo].[CarCountries] SET [CarCountry] = @CarCountry WHERE ([ID] = @Origina" +
-                "l_ID)";
+                "l_ID)\r\n";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CarCountry", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "CarCountry", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -6850,7 +6850,7 @@ SELECT ID, Brand, Name, Year, Country_ID, Status_ID FROM CarModels WHERE (ID = @
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::laba5.Properties.Settings.Default.AutoDBConnectionString;
+            this._connection.ConnectionString = global::laba5.Properties.Settings.Default.AutoDBConnectionString1;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7282,7 +7282,7 @@ SELECT ID, CarModel_ID, Number, Mileage, Price, Condition, Color, Amount FROM Ca
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::laba5.Properties.Settings.Default.AutoDBConnectionString;
+            this._connection.ConnectionString = global::laba5.Properties.Settings.Default.AutoDBConnectionString1;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7296,7 +7296,7 @@ SELECT ID, CarModel_ID, Number, Mileage, Price, Condition, Color, Amount FROM Ca
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "DELETE FROM [dbo].[Cars] WHERE ([ID] = @Original_ID) ";
+            this._commandCollection[1].CommandText = "DELETE FROM [dbo].[Cars] WHERE ([ID] = @Original_ID)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
@@ -7734,7 +7734,7 @@ SELECT ID, CarModel_ID, Number, Mileage, Price, Condition, Color, Amount FROM Ca
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::laba5.Properties.Settings.Default.AutoDBConnectionString;
+            this._connection.ConnectionString = global::laba5.Properties.Settings.Default.AutoDBConnectionString1;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8074,7 +8074,7 @@ SELECT ID, Firstname, Surname, Patronymic, Phone, Account_ID FROM Customers WHER
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::laba5.Properties.Settings.Default.AutoDBConnectionString;
+            this._connection.ConnectionString = global::laba5.Properties.Settings.Default.AutoDBConnectionString1;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8518,7 +8518,7 @@ SELECT ID, Firstname, Surname, Patronymic, Post, Account_ID FROM Employees WHERE
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::laba5.Properties.Settings.Default.AutoDBConnectionString;
+            this._connection.ConnectionString = global::laba5.Properties.Settings.Default.AutoDBConnectionString1;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8953,7 +8953,7 @@ SELECT ID, OrderCheck_ID, Car_ID, Amount FROM OrderCar WHERE (ID = @ID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::laba5.Properties.Settings.Default.AutoDBConnectionString;
+            this._connection.ConnectionString = global::laba5.Properties.Settings.Default.AutoDBConnectionString1;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9336,7 +9336,7 @@ SELECT ID, Customer_ID, Employee_ID, OrderDate, OrderTime, PaymentMethod_ID, Pai
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::laba5.Properties.Settings.Default.AutoDBConnectionString;
+            this._connection.ConnectionString = global::laba5.Properties.Settings.Default.AutoDBConnectionString1;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9362,7 +9362,8 @@ JOIN [OrderCar] ON [OrderCheck].[ID] = [OrderCar].[OrderCheck_ID]
 JOIN [Cars] ON [OrderCar].[Car_ID] = [Cars].[ID]
 JOIN [CarModels] ON [Cars].[CarModel_ID] = [CarModels].[ID]
 JOIN [CarStatus] ON [CarModels].[Country_ID] = [CarStatus].[ID]
-JOIN [CarCountries] ON [CarModels].[Status_ID] = [CarCountries].[ID]";
+JOIN [CarCountries] ON [CarModels].[Status_ID] = [CarCountries].[ID]
+";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -9754,7 +9755,7 @@ JOIN [CarCountries] ON [CarModels].[Status_ID] = [CarCountries].[ID]";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::laba5.Properties.Settings.Default.AutoDBConnectionString;
+            this._connection.ConnectionString = global::laba5.Properties.Settings.Default.AutoDBConnectionString1;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10077,7 +10078,7 @@ JOIN [CarCountries] ON [CarModels].[Status_ID] = [CarCountries].[ID]";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::laba5.Properties.Settings.Default.AutoDBConnectionString;
+            this._connection.ConnectionString = global::laba5.Properties.Settings.Default.AutoDBConnectionString1;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

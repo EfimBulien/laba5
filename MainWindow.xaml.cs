@@ -10,12 +10,9 @@ namespace laba5
         AccountsTableAdapter accountsTable = new AccountsTableAdapter();
         AdminWindow adminWindow = new AdminWindow();
         UserWindow userWindow = new UserWindow();
-
         public MainWindow()
         {
             InitializeComponent();
-            userWindow.Show();
-            adminWindow.Show();
         }
 
         private void ResetMainWindow()
@@ -54,11 +51,6 @@ namespace laba5
                         return;
 
                     }
-                }
-                else
-                {
-                    MessageBox.Show("Аккаунт не найден.");
-                    return;
                 }
             }
         }

@@ -1,0 +1,145 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\F15\\source\\repos\\laba5\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E61B2D49-F416-484B-B552-63EFCEFB26B6}|laba5.csproj|C:\\Users\\F15\\source\\repos\\laba5\\autodbdataset.xsd||{07AC752B-D2B0-4DCD-AD9C-237BF561A30A}",
+      "RelativeMoniker": "D:0:0:{E61B2D49-F416-484B-B552-63EFCEFB26B6}|laba5.csproj|solutionrelative:autodbdataset.xsd||{07AC752B-D2B0-4DCD-AD9C-237BF561A30A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E61B2D49-F416-484B-B552-63EFCEFB26B6}|laba5.csproj|c:\\users\\f15\\source\\repos\\laba5\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E61B2D49-F416-484B-B552-63EFCEFB26B6}|laba5.csproj|solutionrelative:mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E61B2D49-F416-484B-B552-63EFCEFB26B6}|laba5.csproj|C:\\Users\\F15\\source\\repos\\laba5\\userwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E61B2D49-F416-484B-B552-63EFCEFB26B6}|laba5.csproj|solutionrelative:userwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E61B2D49-F416-484B-B552-63EFCEFB26B6}|laba5.csproj|C:\\Users\\F15\\source\\repos\\laba5\\userwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{E61B2D49-F416-484B-B552-63EFCEFB26B6}|laba5.csproj|solutionrelative:userwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E61B2D49-F416-484B-B552-63EFCEFB26B6}|laba5.csproj|C:\\Users\\F15\\source\\repos\\laba5\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{E61B2D49-F416-484B-B552-63EFCEFB26B6}|laba5.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E61B2D49-F416-484B-B552-63EFCEFB26B6}|laba5.csproj|C:\\Users\\F15\\source\\repos\\laba5\\regpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{E61B2D49-F416-484B-B552-63EFCEFB26B6}|laba5.csproj|solutionrelative:regpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E61B2D49-F416-484B-B552-63EFCEFB26B6}|laba5.csproj|C:\\Users\\F15\\source\\repos\\laba5\\inputwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{E61B2D49-F416-484B-B552-63EFCEFB26B6}|laba5.csproj|solutionrelative:inputwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E61B2D49-F416-484B-B552-63EFCEFB26B6}|laba5.csproj|C:\\Users\\F15\\source\\repos\\laba5\\inputwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E61B2D49-F416-484B-B552-63EFCEFB26B6}|laba5.csproj|solutionrelative:inputwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\F15\\source\\repos\\laba5\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\F15\\source\\repos\\laba5\\MainWindow.xaml.cs",
+              "RelativeToolTip": "MainWindow.xaml.cs",
+              "ViewState": "AQIAACUAAAAAAAAAAAAkwA4AAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-27T09:50:37.927Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UserWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\F15\\source\\repos\\laba5\\UserWindow.xaml",
+              "RelativeDocumentMoniker": "UserWindow.xaml",
+              "ToolTip": "C:\\Users\\F15\\source\\repos\\laba5\\UserWindow.xaml",
+              "RelativeToolTip": "UserWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-03-27T09:13:30.953Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\F15\\source\\repos\\laba5\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "MainWindow.xaml",
+              "ToolTip": "C:\\Users\\F15\\source\\repos\\laba5\\MainWindow.xaml",
+              "RelativeToolTip": "MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-03-27T09:13:30.953Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "RegPage.xaml",
+              "DocumentMoniker": "C:\\Users\\F15\\source\\repos\\laba5\\RegPage.xaml",
+              "RelativeDocumentMoniker": "RegPage.xaml",
+              "ToolTip": "C:\\Users\\F15\\source\\repos\\laba5\\RegPage.xaml",
+              "RelativeToolTip": "RegPage.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-03-27T09:13:30.957Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AutoDBDataSet.xsd",
+              "DocumentMoniker": "C:\\Users\\F15\\source\\repos\\laba5\\AutoDBDataSet.xsd",
+              "RelativeDocumentMoniker": "AutoDBDataSet.xsd",
+              "ToolTip": "C:\\Users\\F15\\source\\repos\\laba5\\AutoDBDataSet.xsd",
+              "RelativeToolTip": "AutoDBDataSet.xsd",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003579|",
+              "WhenOpened": "2024-03-27T09:13:30.957Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UserWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\F15\\source\\repos\\laba5\\UserWindow.xaml.cs",
+              "RelativeDocumentMoniker": "UserWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\F15\\source\\repos\\laba5\\UserWindow.xaml.cs",
+              "RelativeToolTip": "UserWindow.xaml.cs",
+              "ViewState": "AQIAAHcAAAAAAAAAAAAYwJIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-27T09:13:30.533Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "InputWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\F15\\source\\repos\\laba5\\InputWindow.xaml",
+              "RelativeDocumentMoniker": "InputWindow.xaml",
+              "ToolTip": "C:\\Users\\F15\\source\\repos\\laba5\\InputWindow.xaml",
+              "RelativeToolTip": "InputWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-03-27T09:13:30.101Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "InputWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\F15\\source\\repos\\laba5\\InputWindow.xaml.cs",
+              "RelativeDocumentMoniker": "InputWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\F15\\source\\repos\\laba5\\InputWindow.xaml.cs",
+              "RelativeToolTip": "InputWindow.xaml.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAA8AAAAjAAAA",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKVSURBVDhP7ZTPaxNBFMffbnazG/NDQ5NW3JhQQQixEaEQMYgUxILQg5cIFryo7VEQ/wJPnjUgeqhQRPRmQREihYCWeAg19BRKoEQogZJsatP82Oxmd30zTKBJo0V69QOPHWbefPe9mTePgwM8/VCcd4rCS8UvcbLIP9RPKG9vT4EBwNnM5Ug4SGU9bAzp\u002B2dTlgXP8\u002BV9\u002BVxQ/npRkZe6tfKXlTcvNOZCicVikEwm7dnZ2Q7HcRabpgggGY/ZGJa\u002B7cTDY5LzR7kp7LWNq0HZcvi13QuSJOkI9eF5HhwOB3i9XrVYLL7DKZUuMASM8Qwbw37H9P9q9TjdtMHogehxCVdOe4PTiN3r9YBYtVqFZrMJpVJpJxwOw/r6\u002Bkdc/8kkUO7eipeN4dWdeMo04dlKQfVcj52Cm1MnYcxlgd7VwLZt6Ha7sLa2BrlcDtxutzUzM6MGg8Ensiy/TyQSuyR9Hl7f2u9bp2NqJu68m5yAGzEfBNwc/tEGp9MJmDY1ki6JtF6v89lsdmxra\u002BuRaZrzGxsbLhIUT0NjnPd3IOrXYToswTgRs00a2UEEAY\u002BdCbdaLR7PcWJ1dTWQyWSoloN6Ma5dvhS3tb25iDIuYfmAhVc\u002BCp/PB5FIBBRFIWeqY5TfG41GrlAo6AOCgUAgjgtz0WhUcrloBgOQGyZi5DImJychFArB9va2XqlUqODm5qY\u002BkDK5vXa7DXgmbOYw/ZT7Rn5yMJMBQcLwmf0rhwSPy3/B4zNS0DAM\u002Bm6PMtKBSMmQ0ukjsC/F4/FQh3w\u002BD6MKexhSr6qqAjYHupcw0LEXFhaS\u002BHmAjvKfnt0woihqGOFnTdM\u002BLS8vawOCi4uLIr4ECRe5Wq3GZv8OPj8bG4WRTqexA4P9G6sdKmtWGaQcAAAAAElFTkSuQmCC",
+              "WhenOpened": "2024-03-27T09:13:29.785Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
