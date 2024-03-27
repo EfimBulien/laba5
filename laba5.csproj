@@ -70,6 +70,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="CarClass.cs" />
+    <Compile Include="CarModelPage.xaml.cs">
+      <DependentUpon>CarModelPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CarPage.xaml.cs">
       <DependentUpon>CarPage.xaml</DependentUpon>
     </Compile>
@@ -87,7 +90,12 @@
     <Compile Include="UserWindow.xaml.cs">
       <DependentUpon>UserWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Validation.cs" />
     <Page Include="AdminWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CarModelPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -23,6 +23,7 @@ namespace laba5
         List<string> tableNames = new List<string>();
         RegPage regPage = new RegPage();
         CarPage carPage = new CarPage();
+        CarModelPage modelPage = new CarModelPage();
         CountryPage countryPage = new CountryPage();
         
         public AdminWindow()
@@ -47,7 +48,7 @@ namespace laba5
                     break;
                 case 2: 
                     TableData.ItemsSource = carModels.GetData();
-                    EditFrame.Content = null;
+                    EditFrame.Content = modelPage;
                     break;
                 case 3: 
                     TableData.ItemsSource = cars.GetData();

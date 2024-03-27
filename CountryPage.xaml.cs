@@ -1,6 +1,5 @@
 ﻿using laba5.AutoDBDataSetTableAdapters;
 using System;
-using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -14,14 +13,21 @@ namespace laba5
             InitializeComponent();
         }
 
+        private void ClearBoxes()
+        {
+            IDbox.Text = string.Empty;
+            CountryBox.Text = string.Empty;
+        }
+
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            string newCountry = ValidateInput(CountryBox);
+            string newCountry = Validation.ValidateInput(CountryBox);
             if (newCountry != null)
             {
                 try
                 {
                     countries.Insert(newCountry);
+                    ClearBoxes();
                 }
                 catch
                 {
@@ -33,13 +39,14 @@ namespace laba5
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            string updateID = ValidateInput(IDbox);
-            string updateCountry = ValidateInput(CountryBox);
+            string updateID = Validation.ValidateInt(IDbox);
+            string updateCountry = Validation.ValidateInput(CountryBox);
             if (updateCountry != null && updateID != null)
             {
                 try
                 {
                     countries.UpdateCountry(updateCountry, Convert.ToInt32(updateID));
+                    ClearBoxes();
                 }
                 catch
                 {
@@ -51,12 +58,13 @@ namespace laba5
 
         private void DelButton_Click(object sender, RoutedEventArgs e)
         {
-            string delID = ValidateInput(IDbox);;
+            string delID = Validation.ValidateInt(IDbox);;
             if (delID != null)
             {
                 try
                 {
                     countries.DeleteCountry(Convert.ToInt32(delID));
+                    ClearBoxes();
                 }
                 catch
                 {
@@ -64,30 +72,6 @@ namespace laba5
                     return;
                 }
             }
-        }
-
-        private string ValidateInput(TextBox textBox)
-        {
-            string input = textBox.Text;
-            if (ContainsInvalidCharacters(input))
-            {
-                MessageBox.Show("Введены недопустимые символы. Пожалуйста, исправьте.");
-                ClearBoxes();
-                return null;
-            }
-            else return input;
-        }
-
-        private bool ContainsInvalidCharacters(string input)
-        {
-            Regex regex = new Regex(@"[^a-zA-Z0-9\s]");
-            return regex.IsMatch(input);
-        }
-
-        private void ClearBoxes()
-        {
-            IDbox.Text = string.Empty;
-            CountryBox.Text = string.Empty;
         }
     }
 }

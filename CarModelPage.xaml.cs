@@ -1,14 +1,14 @@
-﻿using laba5.AutoDBDataSetTableAdapters;
+﻿using System.Windows;
 using System;
-using System.Windows;
 using System.Windows.Controls;
+using laba5.AutoDBDataSetTableAdapters;
 
 namespace laba5
 {
-    public partial class CarPage : Page
+    public partial class CarModelPage : Page
     {
-        CarsTableAdapter cars = new CarsTableAdapter();
-        public CarPage()
+        CarModelsTableAdapter carModels = new CarModelsTableAdapter();
+        public CarModelPage()
         {
             InitializeComponent();
         }
@@ -16,24 +16,27 @@ namespace laba5
         private void ClearBoxes()
         {
             IDBox.Text = string.Empty;
-            NumberBox.Text = string.Empty;
+            BrandBox.Text = string.Empty;
+            NameBox.Text = string.Empty;
+            YearBox.Text = string.Empty;
+            CountryIDBox.Text = string.Empty;
+            StatusIDBox.Text = string.Empty;
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             string id = Validation.ValidateInt(IDBox);
-            string number = Validation.ValidateInput(NumberBox);
-            string mileage = Validation.ValidateInt(MileageBox);
-            string price = Validation.ValidateInt(PriceBox);
-            string condition = Validation.ValidateInput(ConditionBox);
-            string color = Validation.ValidateInput(ColorBox);
-            string amount = Validation.ValidateInput(AmountBox);
-            if (id != null && number != null && mileage != null && price != null 
-                && condition != null && color != null && amount != null)
+            string brand = Validation.ValidateInput(BrandBox);
+            string name = Validation.ValidateInput(NameBox);
+            string year = Validation.ValidateInput(YearBox);
+            string country = Validation.ValidateInt(CountryIDBox);
+            string status = Validation.ValidateInt(StatusIDBox);
+
+            if (id != null && brand != null && name != null && year != null && country != null && status != null)
             {
                 try
                 {
-                    cars.Insert(Convert.ToInt32(id), number, Convert.ToInt32(mileage), Convert.ToInt32(price), condition, color, Convert.ToInt32(amount));
+                    carModels.NewModel(brand, name, Convert.ToInt32(year), Convert.ToInt32(country), Convert.ToInt32(status)); 
                     ClearBoxes();
                 }
                 catch
@@ -47,19 +50,17 @@ namespace laba5
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
             string id = Validation.ValidateInt(IDBox);
-            string number = Validation.ValidateInput(NumberBox);
-            string mileage = Validation.ValidateInt(MileageBox);
-            string price = Validation.ValidateInt(PriceBox);
-            string condition = Validation.ValidateInput(ConditionBox);
-            string color = Validation.ValidateInput(ColorBox);
-            string amount = Validation.ValidateInput(AmountBox);
+            string brand = Validation.ValidateInput(BrandBox);
+            string name = Validation.ValidateInput(NameBox);
+            string year = Validation.ValidateInput(YearBox);
+            string country = Validation.ValidateInt(CountryIDBox);
+            string status = Validation.ValidateInt(StatusIDBox);
 
-            if (id != null && number != null && mileage != null && price != null
-                && condition != null && color != null && amount != null)
+            if (id != null && brand != null && name != null && year != null && country != null && status != null)
             {
                 try
                 {
-                    cars.UpdateCar(number, Convert.ToInt32(mileage), Convert.ToInt32(price), condition, color, Convert.ToInt32(amount), Convert.ToInt32(id));
+                    carModels.UpdateModel(brand, name, Convert.ToInt32(year), Convert.ToInt32(country), Convert.ToInt32(status), Convert.ToInt32(id));
                     ClearBoxes();
                 }
                 catch
@@ -78,7 +79,7 @@ namespace laba5
             {
                 try
                 {
-                    cars.DeleteCar(Convert.ToInt32(id));
+                    carModels.DeleteModel(Convert.ToInt32(id));
                     ClearBoxes();
                 }
                 catch

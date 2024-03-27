@@ -76,3 +76,5 @@ C:\Users\F15\source\repos\laba5\obj\Debug\laba5.csproj.CoreCompileInputs.cache
 C:\Users\F15\source\repos\laba5\obj\Debug\laba5.csproj.Up2Date
 C:\Users\F15\source\repos\laba5\obj\Debug\laba5.exe
 C:\Users\F15\source\repos\laba5\obj\Debug\laba5.pdb
+C:\Users\F15\source\repos\laba5\obj\Debug\CarModelPage.g.cs
+C:\Users\F15\source\repos\laba5\obj\Debug\CarModelPage.baml

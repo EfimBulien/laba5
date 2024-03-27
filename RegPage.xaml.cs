@@ -2,7 +2,6 @@
 using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Text.RegularExpressions;
 
 namespace laba5
 {
@@ -13,14 +12,20 @@ namespace laba5
         public RegPage()
         {
             InitializeComponent();
-            
+        }
+
+        private void ClearBoxes()
+        {
+            LoginBox.Text = string.Empty;
+            PasswordBox.Text = string.Empty;
+            IDBox.Text = string.Empty;
         }
 
         private void RegButton_Click(object sender, RoutedEventArgs e)
         {
-            string newLogin = ValidateInput(LoginBox);
-            string newPassword = ValidateInput(PasswordBox);
-            string newID = ValidateInput(IDBox);
+            string newID = Validation.ValidateInt(IDBox);
+            string newLogin = Validation.ValidateInput(LoginBox);
+            string newPassword = Validation.ValidateInput(PasswordBox);
 
             if (newLogin != null && newPassword != null && newID != null)
             {
@@ -34,16 +39,15 @@ namespace laba5
                     MessageBox.Show("Введены недопустимые символы. Пожалуйста, исправьте.");
                     return;
                 }
-            }
-            
+            } 
         }
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            string updateLogin = ValidateInput(LoginBox);
-            string updatePassword = ValidateInput(PasswordBox);
-            string updateID = ValidateInput(IDBox);
-
+            string updateID = Validation.ValidateInt(IDBox);
+            string updateLogin = Validation.ValidateInput(LoginBox);
+            string updatePassword = Validation.ValidateInput(PasswordBox);
+            
             if (updateLogin != null && updatePassword != null && updateID != null)
             {
                 try
@@ -56,13 +60,12 @@ namespace laba5
                     MessageBox.Show("Введены недопустимые символы. Пожалуйста, исправьте.");
                     return;
                 }
-            }
-            
+            } 
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            var deleteID = ValidateInput(IDBox);
+            string deleteID = Validation.ValidateInt(IDBox);
             if(deleteID != null)
             {
                 try
@@ -79,31 +82,6 @@ namespace laba5
                     return;
                 }
             }
-        }
-
-        private void ClearBoxes()
-        {
-            LoginBox.Text = string.Empty;
-            PasswordBox.Text = string.Empty;
-            IDBox.Text = string.Empty;
-        }
-
-        private string ValidateInput(TextBox textBox)
-        {
-            string input = textBox.Text;
-            if (ContainsInvalidCharacters(input))
-            {
-                MessageBox.Show("Введены недопустимые символы. Пожалуйста, исправьте.");
-                ClearBoxes();
-                return null;
-            }
-            else return input;
-        }
-
-        private bool ContainsInvalidCharacters(string input)
-        {
-            Regex regex = new Regex(@"[^a-zA-Z0-9\s]");
-            return regex.IsMatch(input);
         }
     }
 }

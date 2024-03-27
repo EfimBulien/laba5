@@ -1,4 +1,4 @@
-﻿<Page x:Class="laba5.CarPage"
+﻿<Page x:Class="laba5.CarModelPage"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -7,17 +7,16 @@
       xmlns:local="clr-namespace:laba5"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="CarPage">
+      Title="CarModelPage">
     <Grid>
         <StackPanel VerticalAlignment="Bottom">
             <TextBox x:Name="IDBox" materialDesign:HintAssist.Hint="ID" Margin="5"/>
-            <TextBox x:Name="NumberBox" materialDesign:HintAssist.Hint="Номер авто" Margin="5"/>
-            <TextBox x:Name="MileageBox" materialDesign:HintAssist.Hint="Пробег" Margin="5"/>
-            <TextBox x:Name="PriceBox" materialDesign:HintAssist.Hint="Цена" Margin="5"/>
-            <TextBox x:Name="ConditionBox" materialDesign:HintAssist.Hint="Состояние" Margin="5"/>
-            <TextBox x:Name="ColorBox" materialDesign:HintAssist.Hint="Цвет" Margin="5"/>
-            <TextBox x:Name="AmountBox" materialDesign:HintAssist.Hint="Количество" Margin="5"/>
-            <Button x:Name="AddButton" Content="Добавить авто" VerticalAlignment="Bottom" Click="AddButton_Click" Margin="5"/>
+            <TextBox x:Name="BrandBox" materialDesign:HintAssist.Hint="Производитель" Margin="5"/>
+            <TextBox x:Name="NameBox" materialDesign:HintAssist.Hint="Наименование" Margin="5"/>
+            <TextBox x:Name="YearBox" materialDesign:HintAssist.Hint="Год" Margin="5"/>
+            <TextBox x:Name="CountryIDBox" materialDesign:HintAssist.Hint="Страна" Margin="5"/>
+            <TextBox x:Name="StatusIDBox" materialDesign:HintAssist.Hint="Статус" Margin="5"/>
+            <Button x:Name="AddButton" Content="Добавить модель" VerticalAlignment="Bottom" Click="AddButton_Click" Margin="5"/>
             <Button x:Name="EditButton" Content="Обновить" VerticalAlignment="Bottom" Click="EditButton_Click" Margin="5"/>
             <Button x:Name="DeleteButton" Content="Удалить" VerticalAlignment="Bottom" Click="DeleteButton_Click" Margin="5"/>
         </StackPanel>
