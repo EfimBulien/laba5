@@ -18,8 +18,8 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <DataGrid x:Name="dg" IsReadOnly="True" Grid.ColumnSpan="2" AutoGenerateColumns="True" AutoGeneratingColumn="dg_AutoGeneratingColumn"/>
-        <DataGrid x:Name="carsdg" IsReadOnly="True" Grid.Column="0" Grid.Row="1"/>
-        <DataGrid x:Name="modelsdg" IsReadOnly="True" Grid.Column="1" Grid.Row="1"/>
+        <DataGrid x:Name="carsdg" IsReadOnly="True" Grid.Column="0" Grid.Row="1" Margin="5"/>
+        <DataGrid x:Name="modelsdg" IsReadOnly="True" Grid.Column="1" Grid.Row="1" Margin="5"/>
         <StackPanel Grid.Row="2" VerticalAlignment="Bottom">
             <Button x:Name="SaveButton" Content="Сохранить заказы"  Click="SaveButton_Click" Margin="5"/>
             <Button x:Name="ReturnButton" Content="Выйти"  Click="ReturnButton_Click" Margin="5"/>

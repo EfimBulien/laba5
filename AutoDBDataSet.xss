@@ -7,9 +7,9 @@
 <DiagramLayout xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ex:showrelationlabel="False" ViewPortX="-10" ViewPortY="-47" xmlns:ex="urn:schemas-microsoft-com:xml-msdatasource-layout-extended" xmlns="urn:schemas-microsoft-com:xml-msdatasource-layout">
   <Shapes>
     <Shape ID="DesignTable:Accounts" ZOrder="2" X="790" Y="520" Height="290" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="142" />
-    <Shape ID="DesignTable:CarCountries" ZOrder="22" X="1433" Y="295" Height="155" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="88" />
+    <Shape ID="DesignTable:CarCountries" ZOrder="22" X="1433" Y="295" Height="209" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="88" />
     <Shape ID="DesignTable:CarModels" ZOrder="21" X="1077" Y="70" Height="263" Width="286" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="196" />
-    <Shape ID="DesignTable:Cars" ZOrder="20" X="777" Y="70" Height="317" Width="230" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="250" />
+    <Shape ID="DesignTable:Cars" ZOrder="20" X="776" Y="70" Height="344" Width="258" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="250" />
     <Shape ID="DesignTable:CarStatus" ZOrder="19" X="1433" Y="70" Height="155" Width="276" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="88" />
     <Shape ID="DesignTable:Customers" ZOrder="18" X="435" Y="520" Height="263" Width="285" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="196" />
     <Shape ID="DesignTable:Employees" ZOrder="17" X="435" Y="853" Height="263" Width="286" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="196" />
@@ -62,7 +62,7 @@
           <Y>201</Y>
         </Point>
         <Point>
-          <X>1007</X>
+          <X>1034</X>
           <Y>201</Y>
         </Point>
       </RoutePoints>
@@ -98,7 +98,7 @@
     <Connector ID="DesignRelation:FK__OrderCar__Car_ID__5812160E" ZOrder="7" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>777</X>
+          <X>776</X>
           <Y>174</Y>
         </Point>
         <Point>

@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Data;
-using System.IO;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using laba5.AutoDBDataSetTableAdapters;
@@ -24,7 +22,8 @@ namespace laba5
         AutoDBDataSet dataSet = new AutoDBDataSet();
         List<string> tableNames = new List<string>();
         RegPage regPage = new RegPage();
-
+        CarPage carPage = new CarPage();
+        CountryPage countryPage = new CountryPage();
         
         public AdminWindow()
         {
@@ -44,7 +43,7 @@ namespace laba5
                     break;
                 case 1: 
                     TableData.ItemsSource = carCountries.GetData();
-                    EditFrame.Content = null;
+                    EditFrame.Content = countryPage;
                     break;
                 case 2: 
                     TableData.ItemsSource = carModels.GetData();
@@ -52,7 +51,7 @@ namespace laba5
                     break;
                 case 3: 
                     TableData.ItemsSource = cars.GetData();
-                    EditFrame.Content = null; 
+                    EditFrame.Content = carPage; 
                     break;
                 case 4: 
                     TableData.ItemsSource = carStatus.GetData(); 
@@ -102,9 +101,7 @@ namespace laba5
             TableBox.ItemsSource = tableNames;
         }
 
-        
-
-        public void gfff()
+        public void GetFullData()
         {
             TableData.ItemsSource = accounts.GetData();
         }

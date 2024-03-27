@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:laba5"
         mc:Ignorable="d"
-        Title="AdminWindow" Height="450" Width="800">
+        Title="AdminWindow" Height="700" Width="900">
     <Grid Cursor="">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -19,9 +19,8 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <ComboBox x:Name="TableBox" Grid.ColumnSpan="2" SelectionChanged="TableBox_SelectionChanged" VerticalAlignment="Top"/>
-        <DataGrid x:Name="TableData" IsReadOnly="True" Grid.Row="1" VerticalAlignment="Stretch" />
-        <Button x:Name="ReturnButton" Content="Выйти" Grid.Row="3" VerticalAlignment="Bottom" Click="ReturnButton_Click"/>
+        <DataGrid x:Name="TableData" IsReadOnly="True" Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Stretch"/>
+        <Button x:Name="ReturnButton" Content="Выйти" Grid.Row="3" VerticalAlignment="Bottom" Click="ReturnButton_Click" Margin="5"/>
         <Frame x:Name="EditFrame" NavigationUIVisibility="Hidden" Grid.Column="1" Grid.Row="3" Grid.RowSpan="1" VerticalAlignment="Bottom"/>
-        
     </Grid>
 </Window>

@@ -14,6 +14,8 @@ namespace laba5
         public MainWindow()
         {
             InitializeComponent();
+            userWindow.Show();
+            adminWindow.Show();
         }
 
         private void ResetMainWindow()

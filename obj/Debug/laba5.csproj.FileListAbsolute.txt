@@ -33,3 +33,7 @@ C:\Users\efimb\source\repos\laba5\obj\Debug\RegPage.g.cs
 C:\Users\efimb\source\repos\laba5\obj\Debug\RegPage.baml
 C:\Users\efimb\source\repos\laba5\obj\Debug\InputWindow.g.cs
 C:\Users\efimb\source\repos\laba5\obj\Debug\InputWindow.baml
+C:\Users\efimb\source\repos\laba5\obj\Debug\CountryPage.g.cs
+C:\Users\efimb\source\repos\laba5\obj\Debug\CountryPage.baml
+C:\Users\efimb\source\repos\laba5\obj\Debug\CarPage.g.cs
+C:\Users\efimb\source\repos\laba5\obj\Debug\CarPage.baml
