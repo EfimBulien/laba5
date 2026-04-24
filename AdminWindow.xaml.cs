@@ -32,6 +32,7 @@ namespace laba5
         RolesPage rolesPage;
         EmployeesPage employeesPage;
         CustomersPage customersPage;
+        OrderCheckPage orderCheckPage;
 
 
         public AdminWindow()
@@ -46,6 +47,7 @@ namespace laba5
             rolesPage = new RolesPage(this);
             employeesPage = new EmployeesPage(this);
             customersPage = new CustomersPage(this);
+            orderCheckPage = new OrderCheckPage(this);
             FillBox();
         }
 
@@ -93,7 +95,7 @@ namespace laba5
                     break;
                 case 8:
                     TableData.ItemsSource = orderCheck.GetData();
-                    EditFrame.Content = null;
+                    EditFrame.Content = orderCheckPage;
                     break;
                 case 9:
                     TableData.ItemsSource = paymentMethods.GetData();
@@ -210,6 +212,24 @@ namespace laba5
             {
                 TableData.ItemsSource = null;
                 TableData.ItemsSource = customers.GetData();
+            }
+        }
+
+        public void RefreshOrderCheckTable()
+        {
+            if (TableBox.SelectedIndex == 8)
+            {
+                TableData.ItemsSource = null;
+                TableData.ItemsSource = orderCheck.GetData();
+            }
+        }
+
+        public void RefreshOrderCarTable()
+        {
+            if (TableBox.SelectedIndex == 7)
+            {
+                TableData.ItemsSource = null;
+                TableData.ItemsSource = orderCar.GetData();
             }
         }
     }

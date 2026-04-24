@@ -3,7 +3,6 @@ using System;
 using System.Data;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 
 namespace laba5
 {

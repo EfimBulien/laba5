@@ -9912,7 +9912,7 @@ SELECT ID, Customer_ID, Employee_ID, OrderDate, OrderTime, PaymentMethod_ID, Pai
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[4];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[5];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT ID, Customer_ID, Employee_ID, OrderDate, OrderTime, PaymentMethod_ID, Paid" +
@@ -9953,6 +9953,19 @@ JOIN [CarCountries] ON [CarModels].[Status_ID] = [CarCountries].[ID]
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PaymentMethod_ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "PaymentMethod_ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PaidAmount", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 10, 2, "PaidAmount", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[4].Connection = this.Connection;
+            this._commandCollection[4].CommandText = "UPDATE [dbo].[OrderCheck] SET [Customer_ID] = @Customer_ID, [Employee_ID] = @Empl" +
+                "oyee_ID, [OrderDate] = @OrderDate, [OrderTime] = @OrderTime, [PaymentMethod_ID] " +
+                "= @PaymentMethod_ID, [PaidAmount] = @PaidAmount WHERE (([ID] = @Original_ID))";
+            this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Customer_ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Customer_ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Employee_ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Employee_ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OrderDate", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "OrderDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OrderTime", global::System.Data.SqlDbType.Time, 5, global::System.Data.ParameterDirection.Input, 0, 0, "OrderTime", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PaymentMethod_ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "PaymentMethod_ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PaidAmount", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 10, 2, "PaidAmount", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10219,6 +10232,61 @@ JOIN [CarCountries] ON [CarModels].[Status_ID] = [CarCountries].[ID]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
         public virtual int UpdateCheck(global::System.Nullable<int> Customer_ID, global::System.Nullable<int> Employee_ID, string OrderDate, string OrderTime, global::System.Nullable<int> PaymentMethod_ID, decimal PaidAmount, int Original_ID) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[3];
+            if ((Customer_ID.HasValue == true)) {
+                command.Parameters[0].Value = ((int)(Customer_ID.Value));
+            }
+            else {
+                command.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((Employee_ID.HasValue == true)) {
+                command.Parameters[1].Value = ((int)(Employee_ID.Value));
+            }
+            else {
+                command.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((OrderDate == null)) {
+                throw new global::System.ArgumentNullException("OrderDate");
+            }
+            else {
+                command.Parameters[2].Value = ((string)(OrderDate));
+            }
+            if ((OrderTime == null)) {
+                throw new global::System.ArgumentNullException("OrderTime");
+            }
+            else {
+                command.Parameters[3].Value = ((string)(OrderTime));
+            }
+            if ((PaymentMethod_ID.HasValue == true)) {
+                command.Parameters[4].Value = ((int)(PaymentMethod_ID.Value));
+            }
+            else {
+                command.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            command.Parameters[5].Value = ((decimal)(PaidAmount));
+            command.Parameters[6].Value = ((int)(Original_ID));
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
+        public virtual int UpdateOrder(global::System.Nullable<int> Customer_ID, global::System.Nullable<int> Employee_ID, string OrderDate, string OrderTime, global::System.Nullable<int> PaymentMethod_ID, decimal PaidAmount, int Original_ID) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[4];
             if ((Customer_ID.HasValue == true)) {
                 command.Parameters[0].Value = ((int)(Customer_ID.Value));
             }

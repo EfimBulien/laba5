@@ -1,0 +1,185 @@
+﻿<Page x:Class="laba5.OrderCheckPage"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:laba5"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="900"
+      Title="OrderCheckPage">
+    <Grid Background="{DynamicResource MaterialDesignPaper}">
+        <ScrollViewer>
+            <StackPanel VerticalAlignment="Top" Margin="15">
+
+                <!-- Секция добавления заказа -->
+                <materialDesign:Card Margin="0,0,0,15" Padding="15">
+                    <StackPanel>
+                        <TextBlock Text="Создать новый заказ" 
+                                   Margin="0,0,0,15" 
+                                   FontWeight="Bold"
+                                   FontSize="16"
+                                   Foreground="{DynamicResource MaterialDesignPrimaryHueDarkBrush}"/>
+
+                        <ComboBox x:Name="CustomerComboBox" 
+                                  materialDesign:HintAssist.Hint="Покупатель"
+                                  Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                  Margin="0,5"/>
+
+                        <ComboBox x:Name="EmployeeComboBox" 
+                                  materialDesign:HintAssist.Hint="Сотрудник"
+                                  Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                  Margin="0,5"/>
+
+                        <TextBox x:Name="OrderDateBox" 
+                                 materialDesign:HintAssist.Hint="Дата заказа (ГГГГ-ММ-ДД)"
+                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                 Margin="0,5"/>
+
+                        <TextBox x:Name="OrderTimeBox" 
+                                 materialDesign:HintAssist.Hint="Время заказа (ЧЧ:ММ)"
+                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                 Margin="0,5"/>
+
+                        <ComboBox x:Name="PaymentMethodComboBox" 
+                                  materialDesign:HintAssist.Hint="Способ оплаты"
+                                  Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                  Margin="0,5"/>
+
+                        <TextBox x:Name="PaidAmountBox" 
+                                 materialDesign:HintAssist.Hint="Сумма оплаты"
+                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                 Margin="0,5"/>
+
+                        <Button x:Name="CreateOrderButton" 
+                                Content="Создать заказ" 
+                                Click="CreateOrderButton_Click" 
+                                Foreground="White"
+                                Margin="0,5"/>
+                    </StackPanel>
+                </materialDesign:Card>
+
+                <materialDesign:Card Margin="0,0,0,15" Padding="15">
+                    <StackPanel>
+                        <TextBlock Text="Добавить автомобиль в заказ" 
+                                   Margin="0,0,0,15" 
+                                   FontWeight="Bold"
+                                   FontSize="16"
+                                   Foreground="{DynamicResource MaterialDesignPrimaryHueDarkBrush}"/>
+
+                        <TextBox x:Name="OrderCheckIDBox" 
+                                 materialDesign:HintAssist.Hint="ID заказа"
+                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                 Margin="0,5"/>
+
+                        <ComboBox x:Name="CarComboBox" 
+                                  materialDesign:HintAssist.Hint="Автомобиль"
+                                  Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                  Margin="0,5"/>
+
+                        <TextBox x:Name="CarAmountBox" 
+                                 materialDesign:HintAssist.Hint="Количество"
+                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                 Margin="0,5"/>
+
+                        <Button x:Name="AddCarToOrderButton" 
+                                Content="Добавить автомобиль" 
+                                Click="AddCarToOrderButton_Click" 
+                                Foreground="White"
+                                Margin="0,5"/>
+                    </StackPanel>
+                </materialDesign:Card>
+
+                <materialDesign:Card Margin="0,0,0,15" Padding="15">
+                    <StackPanel>
+                        <TextBlock Text="Редактировать/Удалить заказ" 
+                                   Margin="0,0,0,15" 
+                                   FontWeight="Bold"
+                                   FontSize="16"
+                                   Foreground="{DynamicResource MaterialDesignPrimaryHueDarkBrush}"/>
+
+                        <TextBox x:Name="EditOrderCheckIDBox" 
+                                 materialDesign:HintAssist.Hint="ID заказа"
+                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                 Margin="0,5"/>
+
+                        <ComboBox x:Name="EditCustomerComboBox" 
+                                  materialDesign:HintAssist.Hint="Новый покупатель"
+                                  Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                  Margin="0,5"/>
+
+                        <ComboBox x:Name="EditEmployeeComboBox" 
+                                  materialDesign:HintAssist.Hint="Новый сотрудник"
+                                  Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                  Margin="0,5"/>
+
+                        <TextBox x:Name="EditOrderDateBox" 
+                                 materialDesign:HintAssist.Hint="Новая дата (ГГГГ-ММ-ДД)"
+                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                 Margin="0,5"/>
+
+                        <TextBox x:Name="EditOrderTimeBox" 
+                                 materialDesign:HintAssist.Hint="Новое время (ЧЧ:ММ)"
+                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                 Margin="0,5"/>
+
+                        <ComboBox x:Name="EditPaymentMethodComboBox" 
+                                  materialDesign:HintAssist.Hint="Новый способ оплаты"
+                                  Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                  Margin="0,5"/>
+
+                        <TextBox x:Name="EditPaidAmountBox" 
+                                 materialDesign:HintAssist.Hint="Новая сумма"
+                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                 Margin="0,5"/>
+
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                            <Button x:Name="EditOrderButton" 
+                                    Content="Изменить" 
+                                    Click="EditOrderButton_Click"
+                                    Foreground="White"
+                                    Width="120"
+                                    Margin="0,0,10,0"/>
+                            <Button x:Name="DeleteOrderButton" 
+                                    Content="Удалить" 
+                                    Click="DeleteOrderButton_Click" 
+                                    Foreground="White"
+                                    Width="120"/>
+                        </StackPanel>
+                    </StackPanel>
+                </materialDesign:Card>
+
+                <materialDesign:Card Margin="0,0,0,15" Padding="15">
+                    <StackPanel>
+                        <TextBlock Text="Просмотр заказа" 
+                                   Margin="0,0,0,15" 
+                                   FontWeight="Bold"
+                                   FontSize="16"
+                                   Foreground="{DynamicResource MaterialDesignPrimaryHueDarkBrush}"/>
+
+                        <TextBox x:Name="ViewOrderIDBox" 
+                                 materialDesign:HintAssist.Hint="ID заказа для просмотра"
+                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                 Margin="0,5"/>
+
+                        <Button x:Name="ViewOrderButton" 
+                                Content="Показать автомобили" 
+                                Click="ViewOrderButton_Click" 
+                                Margin="0,5"/>
+
+                        <ListBox x:Name="OrderCarsListBox" 
+                                 Height="150"
+                                 Margin="0,10"
+                                 Style="{StaticResource MaterialDesignListBox}"/>
+
+                        <TextBlock x:Name="TotalAmountText" 
+                                   FontWeight="Bold"
+                                   Margin="0,5"
+                                   Foreground="{DynamicResource MaterialDesignPrimaryHueDarkBrush}"
+                                   FontSize="14"/>
+                    </StackPanel>
+                </materialDesign:Card>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

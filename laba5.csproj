@@ -69,6 +69,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AutoDBDataSet.cs">
+      <DependentUpon>AutoDBDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="CarClass.cs" />
     <Compile Include="CarModelPage.xaml.cs">
       <DependentUpon>CarModelPage.xaml</DependentUpon>
@@ -93,6 +96,9 @@
     </Compile>
     <Compile Include="JsonConverter.cs" />
     <Compile Include="ModelCarClass.cs" />
+    <Compile Include="OrderCheckPage.xaml.cs">
+      <DependentUpon>OrderCheckPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PaymentMethodsPage.xaml.cs">
       <DependentUpon>PaymentMethodsPage.xaml</DependentUpon>
     </Compile>
@@ -158,6 +164,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="OrderCheckPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PaymentMethodsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
