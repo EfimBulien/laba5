@@ -26,8 +26,8 @@ namespace laba5
         CarModelPage modelPage;
         CountryPage countryPage;
         CarStatusPage carStatusPage;
-       
-        
+
+
         public AdminWindow()
         {
             InitializeComponent();
@@ -44,54 +44,54 @@ namespace laba5
 
             switch (selected_table)
             {
-                case 0: 
-                    TableData.ItemsSource = accounts.GetData(); 
-                    EditFrame.Content = regPage; 
+                case 0:
+                    TableData.ItemsSource = accounts.GetData();
+                    EditFrame.Content = regPage;
                     break;
-                case 1: 
+                case 1:
                     TableData.ItemsSource = carCountries.GetData();
                     EditFrame.Content = countryPage;
                     break;
-                case 2: 
+                case 2:
                     TableData.ItemsSource = carModels.GetData();
                     modelPage.RefreshComboBoxData();
                     EditFrame.Content = modelPage;
                     break;
-                case 3: 
+                case 3:
                     TableData.ItemsSource = cars.GetData();
-                    EditFrame.Content = carPage; 
+                    EditFrame.Content = carPage;
                     break;
-                case 4: 
-                    TableData.ItemsSource = carStatus.GetData(); 
-                    EditFrame.Content = carStatusPage; 
+                case 4:
+                    TableData.ItemsSource = carStatus.GetData();
+                    EditFrame.Content = carStatusPage;
                     break;
-                case 5: 
-                    TableData.ItemsSource = customers.GetData(); 
-                    EditFrame.Content = null; 
+                case 5:
+                    TableData.ItemsSource = customers.GetData();
+                    EditFrame.Content = null;
                     break;
-                case 6: 
-                    TableData.ItemsSource = employees.GetData(); 
-                    EditFrame.Content = null; 
+                case 6:
+                    TableData.ItemsSource = employees.GetData();
+                    EditFrame.Content = null;
                     break;
-                case 7: 
-                    TableData.ItemsSource = orderCar.GetData(); 
-                    EditFrame.Content = null; 
+                case 7:
+                    TableData.ItemsSource = orderCar.GetData();
+                    EditFrame.Content = null;
                     break;
-                case 8: 
-                    TableData.ItemsSource = orderCheck.GetData(); 
-                    EditFrame.Content = null; 
+                case 8:
+                    TableData.ItemsSource = orderCheck.GetData();
+                    EditFrame.Content = null;
                     break;
-                case 9: 
-                    TableData.ItemsSource = paymentMethods.GetData(); 
-                    EditFrame.Content = null; 
+                case 9:
+                    TableData.ItemsSource = paymentMethods.GetData();
+                    EditFrame.Content = null;
                     break;
-                case 10: 
-                    TableData.ItemsSource = roles.GetData(); 
-                    EditFrame.Content = null; 
+                case 10:
+                    TableData.ItemsSource = roles.GetData();
+                    EditFrame.Content = null;
                     break;
                 default:
-                    TableData.ItemsSource = accounts.GetData(); 
-                    EditFrame.Content = regPage; 
+                    TableData.ItemsSource = accounts.GetData();
+                    EditFrame.Content = regPage;
                     break;
             }
         }

@@ -51,14 +51,14 @@ namespace laba5
                     switch (role)
                     {
                         case 1:
-                            MessageBox.Show("Добро пожаловать, администратор!");
+                            //MessageBox.Show("Добро пожаловать, администратор!");
                             adminWindow.Show();
                             ResetMainWindow();
                             Close();
                             return;
 
                         case 2:
-                            MessageBox.Show("Добро пожаловать, пользователь!");
+                            //MessageBox.Show("Добро пожаловать, пользователь!");
                             userWindow.Show();
                             ResetMainWindow();
                             Close();
