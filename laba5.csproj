@@ -76,13 +76,16 @@
     <Compile Include="CarPage.xaml.cs">
       <DependentUpon>CarPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CarStatusPage.xaml.cs">
+      <DependentUpon>CarStatusPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CountryPage.xaml.cs">
       <DependentUpon>CountryPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="InputWindow.xaml.cs">
       <DependentUpon>InputWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LabaConverter.cs" />
+    <Compile Include="JsonConverter.cs" />
     <Compile Include="ModelCarClass.cs" />
     <Compile Include="RegPage.xaml.cs">
       <DependentUpon>RegPage.xaml</DependentUpon>
@@ -100,6 +103,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CarPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CarStatusPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

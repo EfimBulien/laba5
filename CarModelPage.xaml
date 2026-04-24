@@ -10,15 +10,67 @@
       Title="CarModelPage">
     <Grid>
         <StackPanel VerticalAlignment="Bottom">
-            <TextBox x:Name="IDBox" materialDesign:HintAssist.Hint="ID" Margin="5"/>
-            <TextBox x:Name="BrandBox" materialDesign:HintAssist.Hint="Производитель" Margin="5"/>
-            <TextBox x:Name="NameBox" materialDesign:HintAssist.Hint="Наименование" Margin="5"/>
-            <TextBox x:Name="YearBox" materialDesign:HintAssist.Hint="Год" Margin="5"/>
-            <TextBox x:Name="CountryIDBox" materialDesign:HintAssist.Hint="Страна" Margin="5"/>
-            <TextBox x:Name="StatusIDBox" materialDesign:HintAssist.Hint="Статус" Margin="5"/>
-            <Button x:Name="AddButton" Content="Добавить модель" VerticalAlignment="Bottom" Click="AddButton_Click" Margin="5"/>
-            <Button x:Name="EditButton" Content="Обновить" VerticalAlignment="Bottom" Click="EditButton_Click" Margin="5"/>
-            <Button x:Name="DeleteButton" Content="Удалить" VerticalAlignment="Bottom" Click="DeleteButton_Click" Margin="5"/>
+            <TextBlock Text="Добавить модель:" 
+                       Margin="5" 
+                       FontWeight="Bold"
+                       Foreground="Gray"/>
+            <TextBox x:Name="BrandBox" 
+                     materialDesign:HintAssist.Hint="Производитель" 
+                     Margin="5"/>
+            <TextBox x:Name="NameBox" 
+                     materialDesign:HintAssist.Hint="Наименование" 
+                     Margin="5"/>
+            <TextBox x:Name="YearBox" 
+                     materialDesign:HintAssist.Hint="Год" 
+                     Margin="5"/>
+            <ComboBox x:Name="CountryComboBox" 
+                      materialDesign:HintAssist.Hint="Страна"
+                      Margin="5" 
+                      Height="40"/>
+            <ComboBox x:Name="StatusComboBox" 
+                      materialDesign:HintAssist.Hint="Статус"
+                      Margin="5" 
+                      Height="40"/>
+            <Button x:Name="AddButton" 
+                    Content="Добавить модель" 
+                    VerticalAlignment="Bottom" 
+                    Click="AddButton_Click" 
+                    Margin="5"/>
+            
+            <TextBlock Text="Редактировать/Удалить модель:"
+                       Margin="5" 
+                       FontWeight="Bold" 
+                       Foreground="Gray"/>
+            <TextBox x:Name="IDBox" 
+                     materialDesign:HintAssist.Hint="ID модели" 
+                     Margin="5"/>
+            <TextBox x:Name="EditBrandBox" 
+                     materialDesign:HintAssist.Hint="Новый производитель" 
+                     Margin="5"/>
+            <TextBox x:Name="EditNameBox" 
+                     materialDesign:HintAssist.Hint="Новое наименование" 
+                     Margin="5"/>
+            <TextBox x:Name="EditYearBox" 
+                     materialDesign:HintAssist.Hint="Новый год" 
+                     Margin="5"/>
+            <ComboBox x:Name="EditCountryComboBox" 
+                      materialDesign:HintAssist.Hint="Новая страна"
+                      Margin="5" 
+                      Height="40"/>
+            <ComboBox x:Name="EditStatusComboBox" 
+                      materialDesign:HintAssist.Hint="Новый статус"
+                      Margin="5" 
+                      Height="40"/>
+            <Button x:Name="EditButton" 
+                    Content="Обновить" 
+                    VerticalAlignment="Bottom" 
+                    Click="EditButton_Click" 
+                    Margin="5"/>
+            <Button x:Name="DeleteButton" 
+                    Content="Удалить" 
+                    VerticalAlignment="Bottom" 
+                    Click="DeleteButton_Click" 
+                    Margin="5"/>
         </StackPanel>
     </Grid>
 </Page>

@@ -64,8 +64,8 @@ CREATE TABLE CarModels (
     Brand NVARCHAR(50) UNIQUE NOT NULL,
     Name NVARCHAR(50) NOT NULL,
     Year INT NOT NULL,
-    Country_ID INT FOREIGN KEY REFERENCES CarStatus(ID),
-    Status_ID INT FOREIGN KEY REFERENCES CarCountries(ID)
+    Country_ID INT FOREIGN KEY REFERENCES CarCountries(ID),
+    Status_ID INT FOREIGN KEY REFERENCES CarStatus(ID)
 );
 GO
 
@@ -118,4 +118,8 @@ INSERT INTO Employees (Firstname, Surname, Patronymic, Post, Account_ID) VALUES
 ('Алексей', 'Сидоров', 'Владимирович', 'Manager', 1);
 GO
 
-SELECT * FROM dbo.Accounts;
+INSERT INTO CarStatus (CarStatus) VALUES ('Продано'), ('В продаже'), ('На заказ');
+GO
+
+INSERT INTO CarCountries (CarCountry) VALUES ('Россия'), ('Германия'), ('Япония');
+GO

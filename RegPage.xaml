@@ -11,12 +11,50 @@
 
     <Grid>
         <StackPanel VerticalAlignment="Bottom">
-            <TextBox x:Name="LoginBox" materialDesign:HintAssist.Hint="Логин" Margin="5"/>
-            <TextBox x:Name="PasswordBox" materialDesign:HintAssist.Hint="Пароль" Margin="5"/>
-            <TextBox x:Name="IDBox" materialDesign:HintAssist.Hint="ID" Margin="5"/>
-            <Button x:Name="RegButton" Content="Зарегестрировать" VerticalAlignment="Bottom" Click="RegButton_Click" Margin="5"/>
-            <Button x:Name="EditButton" Content="Обновить" VerticalAlignment="Bottom" Click="EditButton_Click" Margin="5"/>
-            <Button x:Name="DeleteButton" Content="Удалить" VerticalAlignment="Bottom" Click="DeleteButton_Click" Margin="5"/>
+            <TextBlock Text="Добавить пользователя:" 
+                       Margin="5" 
+                       FontWeight="Bold"
+                       Foreground="Gray"/>
+            <TextBox x:Name="LoginBox"
+                     materialDesign:HintAssist.Hint="Логин
+                     " Margin="5"/>
+            <TextBox x:Name="PasswordBox"
+                     materialDesign:HintAssist.Hint="Пароль" 
+                     Margin="5"/>
+            <ComboBox x:Name="RoleBox" 
+                      materialDesign:HintAssist.Hint="Роль"
+                      Margin="5" VerticalAlignment="Center"
+                      Height="40">
+                <ComboBoxItem>Админ</ComboBoxItem>
+                <ComboBoxItem>Пользователь</ComboBoxItem>
+            </ComboBox>
+            <Button x:Name="RegButton" 
+                    Content="Зарегестрировать" 
+                    VerticalAlignment="Bottom" 
+                    Click="RegButton_Click"
+                    Margin="5"/>
+            
+            <TextBlock Text="Редактировать/Удалить пользователя:"
+                       Margin="5" 
+                       FontWeight="Bold" 
+                       Foreground="Gray"/>
+            <TextBox x:Name="SearchLoginBox" 
+                     materialDesign:HintAssist.Hint="Введите логин для поиска" 
+                     Margin="5"/>
+            <TextBox x:Name="EditLoginBox"
+                     materialDesign:HintAssist.Hint="Новый логин"
+                     Margin="5"/>
+            <TextBox x:Name="EditPasswordBox" 
+                     materialDesign:HintAssist.Hint="Новый пароль" 
+                     Margin="5"/>
+            <Button x:Name="EditButton" Content="Обновить"
+                    VerticalAlignment="Bottom" 
+                    Click="EditButton_Click"
+                    Margin="5"/>
+            <Button x:Name="DeleteButton" Content="Удалить"
+                    VerticalAlignment="Bottom"
+                    Click="DeleteButton_Click"
+                    Margin="5"/>
         </StackPanel>
     </Grid>
 </Page>

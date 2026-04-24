@@ -21,14 +21,20 @@ namespace laba5
         RolesTableAdapter roles = new RolesTableAdapter();
         AutoDBDataSet dataSet = new AutoDBDataSet();
         List<string> tableNames = new List<string>();
-        RegPage regPage = new RegPage();
+        RegPage regPage;
         CarPage carPage = new CarPage();
-        CarModelPage modelPage = new CarModelPage();
-        CountryPage countryPage = new CountryPage();
+        CarModelPage modelPage;
+        CountryPage countryPage;
+        CarStatusPage carStatusPage;
+       
         
         public AdminWindow()
         {
             InitializeComponent();
+            regPage = new RegPage(this);
+            countryPage = new CountryPage(this);
+            carStatusPage = new CarStatusPage(this);
+            modelPage = new CarModelPage(this);
             FillBox();
         }
 
@@ -48,6 +54,7 @@ namespace laba5
                     break;
                 case 2: 
                     TableData.ItemsSource = carModels.GetData();
+                    modelPage.RefreshComboBoxData();
                     EditFrame.Content = modelPage;
                     break;
                 case 3: 
@@ -56,7 +63,7 @@ namespace laba5
                     break;
                 case 4: 
                     TableData.ItemsSource = carStatus.GetData(); 
-                    EditFrame.Content = null; 
+                    EditFrame.Content = carStatusPage; 
                     break;
                 case 5: 
                     TableData.ItemsSource = customers.GetData(); 
@@ -82,6 +89,10 @@ namespace laba5
                     TableData.ItemsSource = roles.GetData(); 
                     EditFrame.Content = null; 
                     break;
+                default:
+                    TableData.ItemsSource = accounts.GetData(); 
+                    EditFrame.Content = regPage; 
+                    break;
             }
         }
 
@@ -105,6 +116,42 @@ namespace laba5
         public void GetFullData()
         {
             TableData.ItemsSource = accounts.GetData();
+        }
+
+        public void RefreshAccountsTable()
+        {
+            if (TableBox.SelectedIndex == 0)
+            {
+                TableData.ItemsSource = null;
+                TableData.ItemsSource = accounts.GetData();
+            }
+        }
+
+        public void RefreshCountriesTable()
+        {
+            if (TableBox.SelectedIndex == 1)
+            {
+                TableData.ItemsSource = null;
+                TableData.ItemsSource = carCountries.GetData();
+            }
+        }
+
+        public void RefreshCarStatusTable()
+        {
+            if (TableBox.SelectedIndex == 4)
+            {
+                TableData.ItemsSource = null;
+                TableData.ItemsSource = carStatus.GetData();
+            }
+        }
+
+        public void RefreshCarModelsTable()
+        {
+            if (TableBox.SelectedIndex == 2)
+            {
+                TableData.ItemsSource = null;
+                TableData.ItemsSource = carModels.GetData();
+            }
         }
     }
 }

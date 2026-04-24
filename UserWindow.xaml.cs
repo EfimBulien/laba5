@@ -10,11 +10,13 @@ namespace laba5
 {
     public partial class UserWindow : Window
     {
+        private OrderCheckTableAdapter orderCheck = new OrderCheckTableAdapter();
         
-        OrderCheckTableAdapter orderCheck = new OrderCheckTableAdapter();
-        CarsTableAdapter carsTable = new CarsTableAdapter();
-        CarModelsTableAdapter carModels = new CarModelsTableAdapter();
-        string filePath = "check.txt";
+        private CarsTableAdapter carsTable = new CarsTableAdapter();
+        
+        private CarModelsTableAdapter carModels = new CarModelsTableAdapter();
+
+        private readonly string filePath = "check.txt";
 
         public UserWindow()
         {
@@ -50,7 +52,7 @@ namespace laba5
 
         private void ImortButton_Click(object sender, RoutedEventArgs e)
         {
-            List<CarClass> cars = LabaConverter.DeserializeObject<List<CarClass>>();
+            List<CarClass> cars = JsonConverter.DeserializeObject<List<CarClass>>();
             foreach (var car in cars)
             {
                 carsTable.Insert(car.CarModel_ID, car.Number, car.Mileage, car.Price, car.Condtion, car.Color, car.Amount);
@@ -67,7 +69,7 @@ namespace laba5
 
         private void imptButton_Click(object sender, RoutedEventArgs e)
         {
-            List<ModelCarClass> carmodels = LabaConverter.DeserializeObject<List<ModelCarClass>>();
+            List<ModelCarClass> carmodels = JsonConverter.DeserializeObject<List<ModelCarClass>>();
             foreach (var modelCar in carmodels)
             {
                 carModels.Insert(modelCar.Brand, modelCar.Name, modelCar.Year, modelCar.Country_ID, modelCar.Status_ID);

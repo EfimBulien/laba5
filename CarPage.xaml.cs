@@ -7,7 +7,8 @@ namespace laba5
 {
     public partial class CarPage : Page
     {
-        CarsTableAdapter cars = new CarsTableAdapter();
+        private CarsTableAdapter cars = new CarsTableAdapter();
+
         public CarPage()
         {
             InitializeComponent();
@@ -22,14 +23,14 @@ namespace laba5
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             string id = Validation.ValidateInt(IDBox);
-            string number = Validation.ValidateInput(NumberBox);
-            string mileage = Validation.ValidateInt(MileageBox);
+            string number = Validation.ValidateCarNumber(NumberBox);
+            string mileage = Validation.ValidateMileage(MileageBox);
             string price = Validation.ValidateInt(PriceBox);
-            string condition = Validation.ValidateInput(ConditionBox);
-            string color = Validation.ValidateInput(ColorBox);
-            string amount = Validation.ValidateInput(AmountBox);
-            if (id != null && number != null && mileage != null && price != null 
-                && condition != null && color != null && amount != null)
+            string condition = Validation.ValidateRussianInput(ConditionBox);
+            string color = Validation.ValidateRussianInput(ColorBox);
+            string amount = Validation.ValidateInt(AmountBox);
+
+            if (id != null && number != null && mileage != null && price != null && condition != null && color != null && amount != null)
             {
                 try
                 {
@@ -47,15 +48,14 @@ namespace laba5
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
             string id = Validation.ValidateInt(IDBox);
-            string number = Validation.ValidateInput(NumberBox);
-            string mileage = Validation.ValidateInt(MileageBox);
+            string number = Validation.ValidateCarNumber(NumberBox);
+            string mileage = Validation.ValidateMileage(MileageBox);
             string price = Validation.ValidateInt(PriceBox);
-            string condition = Validation.ValidateInput(ConditionBox);
-            string color = Validation.ValidateInput(ColorBox);
-            string amount = Validation.ValidateInput(AmountBox);
+            string condition = Validation.ValidateRussianInput(ConditionBox);
+            string color = Validation.ValidateRussianInput(ColorBox);
+            string amount = Validation.ValidateInt(AmountBox);
 
-            if (id != null && number != null && mileage != null && price != null
-                && condition != null && color != null && amount != null)
+            if (id != null && number != null && mileage != null && price != null && condition != null && color != null && amount != null)
             {
                 try
                 {
