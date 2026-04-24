@@ -10,16 +10,76 @@
       Title="CarPage">
     <Grid>
         <StackPanel VerticalAlignment="Bottom">
-            <TextBox x:Name="IDBox" materialDesign:HintAssist.Hint="ID" Margin="5"/>
-            <TextBox x:Name="NumberBox" materialDesign:HintAssist.Hint="Номер авто" Margin="5"/>
-            <TextBox x:Name="MileageBox" materialDesign:HintAssist.Hint="Пробег" Margin="5"/>
-            <TextBox x:Name="PriceBox" materialDesign:HintAssist.Hint="Цена" Margin="5"/>
-            <TextBox x:Name="ConditionBox" materialDesign:HintAssist.Hint="Состояние" Margin="5"/>
-            <TextBox x:Name="ColorBox" materialDesign:HintAssist.Hint="Цвет" Margin="5"/>
-            <TextBox x:Name="AmountBox" materialDesign:HintAssist.Hint="Количество" Margin="5"/>
-            <Button x:Name="AddButton" Content="Добавить авто" VerticalAlignment="Bottom" Click="AddButton_Click" Margin="5"/>
-            <Button x:Name="EditButton" Content="Обновить" VerticalAlignment="Bottom" Click="EditButton_Click" Margin="5"/>
-            <Button x:Name="DeleteButton" Content="Удалить" VerticalAlignment="Bottom" Click="DeleteButton_Click" Margin="5"/>
+            <TextBlock Text="Добавить автомобиль:" 
+                       Margin="5" 
+                       FontWeight="Bold"
+                       Foreground="Gray"/>
+            <TextBox x:Name="NumberBox" 
+                     materialDesign:HintAssist.Hint="Номер авто" 
+                     Margin="5"/>
+            <TextBox x:Name="MileageBox" 
+                     materialDesign:HintAssist.Hint="Пробег" 
+                     Margin="5"/>
+            <TextBox x:Name="PriceBox" 
+                     materialDesign:HintAssist.Hint="Цена" 
+                     Margin="5"/>
+            <TextBox x:Name="ConditionBox" 
+                     materialDesign:HintAssist.Hint="Состояние" 
+                     Margin="5"/>
+            <TextBox x:Name="ColorBox" 
+                     materialDesign:HintAssist.Hint="Цвет" 
+                     Margin="5"/>
+            <TextBox x:Name="AmountBox" 
+                     materialDesign:HintAssist.Hint="Количество" 
+                     Margin="5"/>
+            <ComboBox x:Name="CarModelComboBox" 
+                      materialDesign:HintAssist.Hint="Выберите модель авто"
+                      DisplayMemberPath="Value"
+                      SelectedValuePath="Key"
+                      Margin="5"/>
+            <Button x:Name="AddButton" 
+                    Content="Добавить автомобиль" 
+                    Click="AddButton_Click" 
+                    Margin="5"/>
+
+            <TextBlock Text="Редактировать/Удалить автомобиль:"
+                       Margin="5" 
+                       FontWeight="Bold" 
+                       Foreground="Gray"/>
+            <TextBox x:Name="IDbox" 
+                     materialDesign:HintAssist.Hint="ID автомобиля" 
+                     Margin="5"/>
+            <TextBox x:Name="EditNumberBox" 
+                     materialDesign:HintAssist.Hint="Новый номер авто" 
+                     Margin="5"/>
+            <TextBox x:Name="EditMileageBox" 
+                     materialDesign:HintAssist.Hint="Новый пробег" 
+                     Margin="5"/>
+            <TextBox x:Name="EditPriceBox" 
+                     materialDesign:HintAssist.Hint="Новая цена" 
+                     Margin="5"/>
+            <TextBox x:Name="EditConditionBox" 
+                     materialDesign:HintAssist.Hint="Новое состояние" 
+                     Margin="5"/>
+            <TextBox x:Name="EditColorBox" 
+                     materialDesign:HintAssist.Hint="Новый цвет" 
+                     Margin="5"/>
+            <TextBox x:Name="EditAmountBox" 
+                     materialDesign:HintAssist.Hint="Новое количество" 
+                     Margin="5"/>
+            <ComboBox x:Name="EditCarModelComboBox" 
+                      materialDesign:HintAssist.Hint="Выберите новую модель"
+                      DisplayMemberPath="Value"
+                      SelectedValuePath="Key"
+                      Margin="5"/>
+            <Button x:Name="EditButton" 
+                    Content="Изменить" 
+                    Click="EditButton_Click" 
+                    Margin="5"/>
+            <Button x:Name="DelButton" 
+                    Content="Удалить" 
+                    Click="DelButton_Click" 
+                    Margin="5"/>
         </StackPanel>
     </Grid>
 </Page>

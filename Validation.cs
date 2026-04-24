@@ -14,8 +14,6 @@ namespace laba5
 
         private const int MIN_YEAR = 1900;
 
-        private const int MAX_YEAR = 2026;
-
         public static string ValidateLogin(TextBox textBox)
         {
             string input = textBox.Text.Trim();

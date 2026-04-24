@@ -5,13 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:laba5"
         mc:Ignorable="d"
-        Title="InputWindow" Height="450" Width="800">
-    <Grid>
-        <Label x:Name="label" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10"/>
-        <TextBox x:Name="inputBox" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10,40,10,10"/>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Orientation="Horizontal" Margin="10">
-            <Button x:Name="ok" Content="OK" Width="75" Margin="5" Click="ok_Click"/>
-            <Button x:Name="cancel" Content="Отмена" Width="94" Margin="5" Click="cancel_Click"/>
+        Title="Ввод суммы оплаты" Height="450" Width="800" 
+        WindowStartupLocation="CenterOwner">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Label x:Name="label" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,0,10" FontSize="14"/>
+
+        <TextBox x:Name="inputBox" Grid.Row="1" Height="30" FontSize="14" PreviewTextInput="inputBox_PreviewTextInput"/>
+
+        <StackPanel Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" Orientation="Horizontal" Margin="0,20,0,0">
+            <Button x:Name="ok" Content="OK" Width="75" Height="30" Margin="5" Click="ok_Click" IsDefault="True"/>
+            <Button x:Name="cancel" Content="Отмена" Width="75" Height="30" Margin="5" Click="cancel_Click" IsCancel="True"/>
         </StackPanel>
     </Grid>
 </Window>
