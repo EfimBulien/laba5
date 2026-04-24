@@ -6,13 +6,13 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:laba5"
       mc:Ignorable="d" 
-      d:DesignHeight="600" d:DesignWidth="900"
+      d:DesignHeight="800" d:DesignWidth="900"
       Title="OrderCheckPage">
     <Grid Background="{DynamicResource MaterialDesignPaper}">
         <ScrollViewer>
             <StackPanel VerticalAlignment="Top" Margin="15">
 
-                <!-- Секция добавления заказа -->
+                <!-- Секция создания заказа -->
                 <materialDesign:Card Margin="0,0,0,15" Padding="15">
                     <StackPanel>
                         <TextBlock Text="Создать новый заказ" 
@@ -46,47 +46,73 @@
                                   Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                                   Margin="0,5"/>
 
-                        <TextBox x:Name="PaidAmountBox" 
-                                 materialDesign:HintAssist.Hint="Сумма оплаты"
-                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                 Margin="0,5"/>
+                        <TextBlock Text="Выберите автомобили:"
+                                   Margin="0,15,0,5"
+                                   FontWeight="Bold"/>
+
+                        <Grid Margin="0,5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="80"/>
+                            </Grid.ColumnDefinitions>
+
+                            <ComboBox x:Name="CarComboBox" 
+                                      materialDesign:HintAssist.Hint="Автомобиль"
+                                      Grid.Column="0"
+                                      Margin="0,0,5,0"/>
+
+                            <TextBox x:Name="CarQuantityBox" 
+                                     materialDesign:HintAssist.Hint="Кол-во"
+                                     Grid.Column="1"
+                                     Margin="5,0,5,0"/>
+
+                            <Button x:Name="AddCarButton" 
+                                    Content="Добавить" 
+                                    Click="AddCarButton_Click"
+                                    Grid.Column="2"
+                                    Margin="5,0,0,0"/>
+                        </Grid>
+
+                        <TextBlock Text="Машины в заказе:"
+                                   Margin="0,15,0,5"
+                                   FontWeight="Bold"/>
+
+                        <DataGrid x:Name="OrderCarsDataGrid"
+                                  Margin="0,5"
+                                  Height="150"
+                                  AutoGenerateColumns="False"
+                                  CanUserAddRows="False">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Модель" Binding="{Binding Model}" Width="*" IsReadOnly="True"/>
+                                <DataGridTextColumn Header="Цена" Binding="{Binding Price, StringFormat=C}" Width="100" IsReadOnly="True"/>
+                                <DataGridTextColumn Header="Кол-во" Binding="{Binding Quantity}" Width="60"/>
+                                <DataGridTextColumn Header="Сумма" Binding="{Binding Total, StringFormat=C}" Width="100" IsReadOnly="True"/>
+                                <DataGridTemplateColumn Header="Удалить" Width="80">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Content="Удалить" Click="RemoveCarButton_Click" Padding="5"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10">
+                            <TextBlock Text="Общая сумма: " FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                            <TextBlock x:Name="TotalPriceTextBlock" 
+                                       Text="0.00 руб." 
+                                       FontWeight="Bold" 
+                                       FontSize="14"
+                                       Foreground="{DynamicResource MaterialDesignPrimaryHueDarkBrush}"
+                                       VerticalAlignment="Center"/>
+                        </StackPanel>
 
                         <Button x:Name="CreateOrderButton" 
                                 Content="Создать заказ" 
                                 Click="CreateOrderButton_Click" 
                                 Foreground="White"
-                                Margin="0,5"/>
-                    </StackPanel>
-                </materialDesign:Card>
-
-                <materialDesign:Card Margin="0,0,0,15" Padding="15">
-                    <StackPanel>
-                        <TextBlock Text="Добавить автомобиль в заказ" 
-                                   Margin="0,0,0,15" 
-                                   FontWeight="Bold"
-                                   FontSize="16"
-                                   Foreground="{DynamicResource MaterialDesignPrimaryHueDarkBrush}"/>
-
-                        <TextBox x:Name="OrderCheckIDBox" 
-                                 materialDesign:HintAssist.Hint="ID заказа"
-                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                 Margin="0,5"/>
-
-                        <ComboBox x:Name="CarComboBox" 
-                                  materialDesign:HintAssist.Hint="Автомобиль"
-                                  Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-                                  Margin="0,5"/>
-
-                        <TextBox x:Name="CarAmountBox" 
-                                 materialDesign:HintAssist.Hint="Количество"
-                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                 Margin="0,5"/>
-
-                        <Button x:Name="AddCarToOrderButton" 
-                                Content="Добавить автомобиль" 
-                                Click="AddCarToOrderButton_Click" 
-                                Foreground="White"
-                                Margin="0,5"/>
+                                Margin="0,15,0,0"/>
                     </StackPanel>
                 </materialDesign:Card>
 

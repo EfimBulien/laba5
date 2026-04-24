@@ -2,12 +2,22 @@
 using System;
 using System.Data;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Linq;
 
 namespace laba5
 {
+    public class OrderItem
+    {
+        public int CarId { get; set; }
+        public string Model { get; set; }
+        public decimal Price { get; set; }
+        public int Quantity { get; set; }
+        public decimal Total => Price * Quantity;
+    }
+
     public partial class OrderCheckPage : Page
     {
         private OrderCheckTableAdapter orderCheck = new OrderCheckTableAdapter();
@@ -19,14 +29,17 @@ namespace laba5
         private CarModelsTableAdapter carModels = new CarModelsTableAdapter();
 
         private AdminWindow parentWindow;
+        private ObservableCollection<OrderItem> orderItems = new ObservableCollection<OrderItem>();
+        private Dictionary<int, decimal> carPrices = new Dictionary<int, decimal>();
 
         public OrderCheckPage(AdminWindow admin = null)
         {
             InitializeComponent();
             parentWindow = admin;
+            OrderCarsDataGrid.ItemsSource = orderItems;
             LoadComboBoxData();
 
-            // Устанавливаем текущую дату и время по умолчанию
+          
             OrderDateBox.Text = DateTime.Now.ToString("yyyy-MM-dd");
             OrderTimeBox.Text = DateTime.Now.ToString("HH:mm");
             EditOrderDateBox.Text = DateTime.Now.ToString("yyyy-MM-dd");
@@ -37,7 +50,6 @@ namespace laba5
         {
             try
             {
-                // Загрузка покупателей
                 var customersData = customers.GetData();
                 var customersList = new List<KeyValuePair<int, string>>();
                 foreach (DataRow row in customersData.Rows)
@@ -51,7 +63,6 @@ namespace laba5
                 CustomerComboBox.ItemsSource = customersList;
                 EditCustomerComboBox.ItemsSource = customersList;
 
-                // Загрузка сотрудников
                 var employeesData = employees.GetData();
                 var employeesList = new List<KeyValuePair<int, string>>();
                 foreach (DataRow row in employeesData.Rows)
@@ -63,7 +74,6 @@ namespace laba5
                 EmployeeComboBox.ItemsSource = employeesList;
                 EditEmployeeComboBox.ItemsSource = employeesList;
 
-                // Загрузка способов оплаты
                 var paymentMethodsData = paymentMethods.GetData();
                 var paymentMethodsList = new List<KeyValuePair<int, string>>();
                 foreach (DataRow row in paymentMethodsData.Rows)
@@ -75,7 +85,6 @@ namespace laba5
                 PaymentMethodComboBox.ItemsSource = paymentMethodsList;
                 EditPaymentMethodComboBox.ItemsSource = paymentMethodsList;
 
-                // Загрузка автомобилей
                 LoadCars();
             }
             catch (Exception ex)
@@ -91,6 +100,7 @@ namespace laba5
                 var carsData = cars.GetData();
                 var modelsData = carModels.GetData();
                 var carsList = new List<KeyValuePair<int, string>>();
+                carPrices.Clear();
 
                 foreach (DataRow carRow in carsData.Rows)
                 {
@@ -100,7 +110,8 @@ namespace laba5
                     decimal price = Convert.ToDecimal(carRow["Price"]);
                     int amount = Convert.ToInt32(carRow["Amount"]);
 
-                    // Находим модель
+                    carPrices[carId] = price;
+
                     string modelName = "";
                     foreach (DataRow modelRow in modelsData.Rows)
                     {
@@ -126,6 +137,97 @@ namespace laba5
             }
         }
 
+        private void CalculateTotal()
+        {
+            decimal total = orderItems.Sum(item => item.Total);
+            TotalPriceTextBlock.Text = $"{total:C}";
+        }
+
+        private void AddCarButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (CarComboBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("Выберите автомобиль!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            string quantityStr = Validation.ValidateInt(CarQuantityBox);
+            if (quantityStr == null) return;
+
+            try
+            {
+                int carId = ((KeyValuePair<int, string>)CarComboBox.SelectedItem).Key;
+                int quantity = Convert.ToInt32(quantityStr);
+
+                if (quantity <= 0)
+                {
+                    MessageBox.Show("Количество должно быть больше 0!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+              
+                var carsData = cars.GetData();
+                int availableAmount = 0;
+                string modelName = "";
+                foreach (DataRow row in carsData.Rows)
+                {
+                    if (Convert.ToInt32(row["ID"]) == carId)
+                    {
+                        availableAmount = Convert.ToInt32(row["Amount"]);
+                        int modelId = Convert.ToInt32(row["CarModel_ID"]);
+                        var modelsData = carModels.GetData();
+                        foreach (DataRow modelRow in modelsData.Rows)
+                        {
+                            if (Convert.ToInt32(modelRow["ID"]) == modelId)
+                            {
+                                modelName = $"{modelRow["Brand"]} {modelRow["Name"]}";
+                                break;
+                            }
+                        }
+                        break;
+                    }
+                }
+
+                if (quantity > availableAmount)
+                {
+                    MessageBox.Show($"Недостаточно автомобилей! Доступно: {availableAmount} шт.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
+                var existingItem = orderItems.FirstOrDefault(item => item.CarId == carId);
+                if (existingItem != null)
+                {
+                    existingItem.Quantity += quantity;
+                }
+                else
+                {
+                    orderItems.Add(new OrderItem
+                    {
+                        CarId = carId,
+                        Model = modelName,
+                        Price = carPrices[carId],
+                        Quantity = quantity
+                    });
+                }
+
+                CarQuantityBox.Text = string.Empty;
+                CarComboBox.SelectedIndex = -1;
+                CalculateTotal();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка: " + ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void RemoveCarButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (OrderCarsDataGrid.SelectedItem is OrderItem item)
+            {
+                orderItems.Remove(item);
+                CalculateTotal();
+            }
+        }
+
         public void RefreshData()
         {
             LoadComboBoxData();
@@ -139,14 +241,10 @@ namespace laba5
             OrderDateBox.Text = DateTime.Now.ToString("yyyy-MM-dd");
             OrderTimeBox.Text = DateTime.Now.ToString("HH:mm");
             PaymentMethodComboBox.SelectedIndex = -1;
-            PaidAmountBox.Text = string.Empty;
-        }
-
-        private void ClearOrderCarBoxes()
-        {
-            OrderCheckIDBox.Text = string.Empty;
+            orderItems.Clear();
+            CarQuantityBox.Text = string.Empty;
             CarComboBox.SelectedIndex = -1;
-            CarAmountBox.Text = string.Empty;
+            CalculateTotal();
         }
 
         private void ClearEditBoxes()
@@ -197,9 +295,11 @@ namespace laba5
                 MessageBox.Show("Выберите способ оплаты!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-
-            string paidAmount = Validation.ValidatePrice(PaidAmountBox);
-            if (paidAmount == null) return;
+            if (orderItems.Count == 0)
+            {
+                MessageBox.Show("Добавьте хотя бы один автомобиль в заказ!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
 
             if (!ValidateDate(OrderDateBox.Text, out DateTime orderDate)) return;
             if (!ValidateTime(OrderTimeBox.Text, out TimeSpan orderTime)) return;
@@ -209,83 +309,32 @@ namespace laba5
                 int customerId = ((KeyValuePair<int, string>)CustomerComboBox.SelectedItem).Key;
                 int employeeId = ((KeyValuePair<int, string>)EmployeeComboBox.SelectedItem).Key;
                 int paymentMethodId = ((KeyValuePair<int, string>)PaymentMethodComboBox.SelectedItem).Key;
-                decimal paidAmountValue = Convert.ToDecimal(paidAmount);
+                decimal totalAmount = orderItems.Sum(item => item.Total);
 
-                orderCheck.Insert(customerId, employeeId, orderDate, orderTime, paymentMethodId, paidAmountValue);
-                MessageBox.Show("Заказ успешно создан!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
-                ClearOrderBoxes();
-                parentWindow?.RefreshOrderCheckTable();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ошибка при создании заказа: " + ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
+                orderCheck.Insert(customerId, employeeId, orderDate, orderTime, paymentMethodId, totalAmount);
 
-        private void AddCarToOrderButton_Click(object sender, RoutedEventArgs e)
-        {
-            string orderCheckIdStr = Validation.ValidateInt(OrderCheckIDBox);
-            string carAmountStr = Validation.ValidateInt(CarAmountBox);
-
-            if (orderCheckIdStr == null || carAmountStr == null) return;
-
-            if (CarComboBox.SelectedIndex == -1)
-            {
-                MessageBox.Show("Выберите автомобиль!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
-
-            try
-            {
-                int orderCheckId = Convert.ToInt32(orderCheckIdStr);
-                int carId = ((KeyValuePair<int, string>)CarComboBox.SelectedItem).Key;
-                int amount = Convert.ToInt32(carAmountStr);
-
-                // Проверяем существование заказа
                 var orderData = orderCheck.GetData();
-                bool orderExists = false;
+                int newOrderId = 0;
                 foreach (DataRow row in orderData.Rows)
                 {
-                    if (Convert.ToInt32(row["ID"]) == orderCheckId)
-                    {
-                        orderExists = true;
-                        break;
-                    }
+                    int id = Convert.ToInt32(row["ID"]);
+                    if (id > newOrderId) newOrderId = id;
                 }
 
-                if (!orderExists)
+                foreach (var item in orderItems)
                 {
-                    MessageBox.Show($"Заказ с ID {orderCheckId} не существует!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    return;
+                    orderCar.Insert(newOrderId, item.CarId, item.Quantity);
                 }
 
-                // Проверяем доступное количество автомобилей
-                var carsData = cars.GetData();
-                int availableAmount = 0;
-                foreach (DataRow row in carsData.Rows)
-                {
-                    if (Convert.ToInt32(row["ID"]) == carId)
-                    {
-                        availableAmount = Convert.ToInt32(row["Amount"]);
-                        break;
-                    }
-                }
-
-                if (amount > availableAmount)
-                {
-                    MessageBox.Show($"Недостаточно автомобилей! Доступно: {availableAmount} шт.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    return;
-                }
-
-                orderCar.Insert(orderCheckId, carId, amount);
-                MessageBox.Show("Автомобиль добавлен в заказ!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
-                ClearOrderCarBoxes();
+                MessageBox.Show("Заказ успешно создан!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                ClearOrderBoxes();
                 LoadCars();
+                parentWindow?.RefreshOrderCheckTable();
                 parentWindow?.RefreshOrderCarTable();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ошибка при добавлении автомобиля: " + ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Ошибка при создании заказа: " + ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -325,7 +374,6 @@ namespace laba5
                 int paymentMethodId = ((KeyValuePair<int, string>)EditPaymentMethodComboBox.SelectedItem).Key;
                 decimal paidAmountValue = Convert.ToDecimal(paidAmount);
 
-                // Проверяем существование заказа
                 var orderData = orderCheck.GetData();
                 bool orderExists = false;
                 foreach (DataRow row in orderData.Rows)
@@ -373,7 +421,6 @@ namespace laba5
             {
                 int orderId = Convert.ToInt32(orderIdStr);
 
-                // Проверяем существование заказа
                 var orderData = orderCheck.GetData();
                 bool orderExists = false;
                 foreach (DataRow row in orderData.Rows)
