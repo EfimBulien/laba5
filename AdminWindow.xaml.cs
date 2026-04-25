@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using laba5.AutoDBDataSetTableAdapters;
@@ -8,32 +9,47 @@ namespace laba5
 {
     public partial class AdminWindow : Window
     {
-        AccountsTableAdapter accounts = new AccountsTableAdapter();
-        CarCountriesTableAdapter carCountries = new CarCountriesTableAdapter();
-        CarModelsTableAdapter carModels = new CarModelsTableAdapter();
-        CarStatusTableAdapter carStatus = new CarStatusTableAdapter();
-        CarsTableAdapter cars = new CarsTableAdapter();
-        CustomersTableAdapter customers = new CustomersTableAdapter();
-        EmployeesTableAdapter employees = new EmployeesTableAdapter();
-        OrderCarTableAdapter orderCar = new OrderCarTableAdapter();
-        OrderCheckTableAdapter orderCheck = new OrderCheckTableAdapter();
-        PaymentMethodsTableAdapter paymentMethods = new PaymentMethodsTableAdapter();
-        RolesTableAdapter roles = new RolesTableAdapter();
-        
-        AutoDBDataSet dataSet = new AutoDBDataSet();
-        List<string> tableNames = new List<string>();
+        private AccountsTableAdapter accounts = new AccountsTableAdapter();
+        private CarCountriesTableAdapter carCountries = new CarCountriesTableAdapter();
+        private CarModelsTableAdapter carModels = new CarModelsTableAdapter();
+        private CarStatusTableAdapter carStatus = new CarStatusTableAdapter();
+        private CarsTableAdapter cars = new CarsTableAdapter();
+        private CustomersTableAdapter customers = new CustomersTableAdapter();
+        private EmployeesTableAdapter employees = new EmployeesTableAdapter();
+        private OrderCarTableAdapter orderCar = new OrderCarTableAdapter();
+        private OrderCheckTableAdapter orderCheck = new OrderCheckTableAdapter();
+        private PaymentMethodsTableAdapter paymentMethods = new PaymentMethodsTableAdapter();
+        private RolesTableAdapter roles = new RolesTableAdapter();
 
-        RegPage regPage;
-        CarPage carPage;
-        CarModelPage modelPage;
-        CountryPage countryPage;
-        CarStatusPage carStatusPage;
-        PaymentMethodsPage paymentMethodsPage;
-        RolesPage rolesPage;
-        EmployeesPage employeesPage;
-        CustomersPage customersPage;
-        OrderCheckPage orderCheckPage;
+        private AutoDBDataSet dataSet = new AutoDBDataSet();
 
+        private Dictionary<string, string> tableDisplayNames = new Dictionary<string, string>
+        {
+            { "Accounts", "Аккаунты" },
+            { "CarCountries", "Страны" },
+            { "CarModels", "Модели машин" },
+            { "Cars", "Машины" },
+            { "CarStatus", "Статусы машин" },
+            { "Customers", "Клиенты" },
+            { "Employees", "Сотрудники" },
+            { "OrderCar", "Заказ-Машина" },
+            { "OrderCheck", "Заказы" },
+            { "PaymentMethods", "Способы оплаты" },
+            { "Roles", "Роли" }
+        };
+
+        private Dictionary<string, string> displayToTableName = new Dictionary<string, string>();
+
+        private RegPage regPage;
+        private CarPage carPage;
+        private CarModelPage modelPage;
+        private CountryPage countryPage;
+        private CarStatusPage carStatusPage;
+        private PaymentMethodsPage paymentMethodsPage;
+        private RolesPage rolesPage;
+        private EmployeesPage employeesPage;
+        private CustomersPage customersPage;
+        private OrderCheckPage orderCheckPage;
 
         public AdminWindow()
         {
@@ -53,62 +69,77 @@ namespace laba5
 
         private void TableBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            int selected_table = TableBox.SelectedIndex;
+            if (TableBox.SelectedItem == null) return;
 
-            switch (selected_table)
+            string selectedDisplayName = TableBox.SelectedItem.ToString();
+            if (!displayToTableName.ContainsKey(selectedDisplayName)) return;
+
+            string tableName = displayToTableName[selectedDisplayName];
+
+            TableData.ItemsSource = null;
+            EditFrame.Content = null;
+
+            try
             {
-                case 0:
-                    TableData.ItemsSource = accounts.GetData();
-                    EditFrame.Content = regPage;
-                    break;
-                case 1:
-                    TableData.ItemsSource = carCountries.GetData();
-                    EditFrame.Content = countryPage;
-                    break;
-                case 2:
-                    TableData.ItemsSource = carModels.GetData();
-                    modelPage.RefreshComboBoxData();
-                    EditFrame.Content = modelPage;
-                    break;
-                case 3:
-                    TableData.ItemsSource = cars.GetData();
-                    carPage.RefreshCarModelsList();
-                    EditFrame.Content = carPage;
-                    break;
-                case 4:
-                    TableData.ItemsSource = carStatus.GetData();
-                    EditFrame.Content = carStatusPage;
-                    break;
-                case 5:
-                    TableData.ItemsSource = customers.GetData();
-                    customersPage.RefreshAccountsList();
-                    EditFrame.Content = customersPage;
-                    break;
-                case 6:
-                    TableData.ItemsSource = employees.GetData();
-                    employeesPage.RefreshAccountsList();
-                    EditFrame.Content = employeesPage;
-                    break;
-                case 7:
-                    TableData.ItemsSource = orderCar.GetData();
-                    EditFrame.Content = null;
-                    break;
-                case 8:
-                    TableData.ItemsSource = orderCheck.GetData();
-                    EditFrame.Content = orderCheckPage;
-                    break;
-                case 9:
-                    TableData.ItemsSource = paymentMethods.GetData();
-                    EditFrame.Content = paymentMethodsPage;
-                    break;
-                case 10:
-                    TableData.ItemsSource = roles.GetData();
-                    EditFrame.Content = rolesPage;
-                    break;
-                default:
-                    TableData.ItemsSource = accounts.GetData();
-                    EditFrame.Content = regPage;
-                    break;
+                switch (tableName)
+                {
+                    case "Accounts":
+                        TableData.ItemsSource = accounts.GetData().DefaultView;
+                        EditFrame.Content = regPage;
+                        break;
+                    case "CarCountries":
+                        TableData.ItemsSource = carCountries.GetData().DefaultView;
+                        EditFrame.Content = countryPage;
+                        break;
+                    case "CarModels":
+                        TableData.ItemsSource = carModels.GetData().DefaultView;
+                        modelPage.RefreshComboBoxData();
+                        EditFrame.Content = modelPage;
+                        break;
+                    case "Cars":
+                        TableData.ItemsSource = cars.GetData().DefaultView;
+                        carPage.RefreshCarModelsList();
+                        EditFrame.Content = carPage;
+                        break;
+                    case "CarStatus":
+                        TableData.ItemsSource = carStatus.GetData().DefaultView;
+                        EditFrame.Content = carStatusPage;
+                        break;
+                    case "Customers":
+                        TableData.ItemsSource = customers.GetData().DefaultView;
+                        customersPage.RefreshAccountsList();
+                        EditFrame.Content = customersPage;
+                        break;
+                    case "Employees":
+                        TableData.ItemsSource = employees.GetData().DefaultView;
+                        employeesPage.RefreshAccountsList();
+                        EditFrame.Content = employeesPage;
+                        break;
+                    case "OrderCar":
+                        TableData.ItemsSource = orderCar.GetData().DefaultView;
+                        EditFrame.Content = null;
+                        break;
+                    case "OrderCheck":
+                        TableData.ItemsSource = orderCheck.GetData().DefaultView;
+                        EditFrame.Content = orderCheckPage;
+                        break;
+                    case "PaymentMethods":
+                        TableData.ItemsSource = paymentMethods.GetData().DefaultView;
+                        EditFrame.Content = paymentMethodsPage;
+                        break;
+                    case "Roles":
+                        TableData.ItemsSource = roles.GetData().DefaultView;
+                        EditFrame.Content = rolesPage;
+                        break;
+                    default:
+                        TableData.ItemsSource = accounts.GetData().DefaultView;
+                        EditFrame.Content = regPage;
+                        break;
+                }
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show($"Ошибка при загрузке таблицы: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -121,115 +152,133 @@ namespace laba5
 
         public void FillBox()
         {
+            displayToTableName.Clear();
             foreach (DataTable table in dataSet.Tables)
             {
-                tableNames.Add(table.TableName);
+                string techName = table.TableName;
+                string displayName = tableDisplayNames.ContainsKey(techName) ? tableDisplayNames[techName] : techName;
+                displayToTableName[displayName] = techName;
             }
 
-            TableBox.ItemsSource = tableNames;
+            TableBox.ItemsSource = displayToTableName.Keys.ToList();
         }
 
         public void GetFullData()
         {
-            TableData.ItemsSource = accounts.GetData();
+            TableData.ItemsSource = accounts.GetData().DefaultView;
         }
 
         public void RefreshAccountsTable()
         {
-            if (TableBox.SelectedIndex == 0)
+            if (TableBox.SelectedItem != null &&
+                TableBox.SelectedItem.ToString() == tableDisplayNames["Accounts"])
             {
                 TableData.ItemsSource = null;
-                TableData.ItemsSource = accounts.GetData();
+                TableData.ItemsSource = accounts.GetData().DefaultView;
             }
         }
 
         public void RefreshCountriesTable()
         {
-            if (TableBox.SelectedIndex == 1)
+            if (TableBox.SelectedItem != null &&
+                TableBox.SelectedItem.ToString() == tableDisplayNames["CarCountries"])
             {
                 TableData.ItemsSource = null;
-                TableData.ItemsSource = carCountries.GetData();
+                TableData.ItemsSource = carCountries.GetData().DefaultView;
             }
         }
 
         public void RefreshCarStatusTable()
         {
-            if (TableBox.SelectedIndex == 4)
+            if (TableBox.SelectedItem != null &&
+                TableBox.SelectedItem.ToString() == tableDisplayNames["CarStatus"])
             {
                 TableData.ItemsSource = null;
-                TableData.ItemsSource = carStatus.GetData();
+                TableData.ItemsSource = carStatus.GetData().DefaultView;
             }
         }
 
         public void RefreshCarModelsTable()
         {
-            if (TableBox.SelectedIndex == 2)
+            if (TableBox.SelectedItem != null &&
+                TableBox.SelectedItem.ToString() == tableDisplayNames["CarModels"])
             {
+                modelPage.RefreshComboBoxData();
                 TableData.ItemsSource = null;
-                TableData.ItemsSource = carModels.GetData();
+                TableData.ItemsSource = carModels.GetData().DefaultView;
             }
         }
 
         public void RefreshPaymentMethodsTable()
         {
-            if (TableBox.SelectedIndex == 9)
+            if (TableBox.SelectedItem != null &&
+                TableBox.SelectedItem.ToString() == tableDisplayNames["PaymentMethods"])
             {
                 TableData.ItemsSource = null;
-                TableData.ItemsSource = paymentMethods.GetData();
+                TableData.ItemsSource = paymentMethods.GetData().DefaultView;
             }
         }
 
         internal void RefreshRolesTable()
         {
-            if (TableBox.SelectedIndex == 10)
+            if (TableBox.SelectedItem != null &&
+                TableBox.SelectedItem.ToString() == tableDisplayNames["Roles"])
             {
                 TableData.ItemsSource = null;
-                TableData.ItemsSource = roles.GetData();
+                TableData.ItemsSource = roles.GetData().DefaultView;
             }
         }
 
         public void RefreshCarsTable()
         {
-            if (TableBox.SelectedIndex == 3)
+            if (TableBox.SelectedItem != null &&
+                TableBox.SelectedItem.ToString() == tableDisplayNames["Cars"])
             {
+                carPage.RefreshCarModelsList();
                 TableData.ItemsSource = null;
-                TableData.ItemsSource = cars.GetData();
+                TableData.ItemsSource = cars.GetData().DefaultView;
             }
         }
 
         public void RefreshEmployeesTable()
         {
-            if (TableBox.SelectedIndex == 6)
+            if (TableBox.SelectedItem != null &&
+                TableBox.SelectedItem.ToString() == tableDisplayNames["Employees"])
             {
+                employeesPage.RefreshAccountsList();
                 TableData.ItemsSource = null;
-                TableData.ItemsSource = employees.GetData();
+                TableData.ItemsSource = employees.GetData().DefaultView;
             }
         }
 
         public void RefreshCustomersTable()
         {
-            if (TableBox.SelectedIndex == 5)
+            if (TableBox.SelectedItem != null &&
+                TableBox.SelectedItem.ToString() == tableDisplayNames["Customers"])
             {
+                customersPage.RefreshAccountsList();
                 TableData.ItemsSource = null;
-                TableData.ItemsSource = customers.GetData();
+                TableData.ItemsSource = customers.GetData().DefaultView;
             }
         }
 
         public void RefreshOrderCheckTable()
         {
-            if (TableBox.SelectedIndex == 8)
+            if (TableBox.SelectedItem != null &&
+                TableBox.SelectedItem.ToString() == tableDisplayNames["OrderCheck"])
             {
                 TableData.ItemsSource = null;
-                TableData.ItemsSource = orderCheck.GetData();
+                TableData.ItemsSource = orderCheck.GetData().DefaultView;
             }
         }
 
         public void RefreshOrderCarTable()
         {
-            if (TableBox.SelectedIndex == 7)
+            if (TableBox.SelectedItem != null &&
+                TableBox.SelectedItem.ToString() == tableDisplayNames["OrderCar"])
             {
                 TableData.ItemsSource = null;
-                TableData.ItemsSource = orderCar.GetData();
+                TableData.ItemsSource = orderCar.GetData().DefaultView;
             }
         }
     }
